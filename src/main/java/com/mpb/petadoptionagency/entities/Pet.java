@@ -6,14 +6,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Dog")
-public class Dog {
+@Table(name = "PET")
+public class Pet {
 
     @Id
     @GeneratedValue
     private Long id;
     private String name;
     private Long age;
+    private String petType;
+    private String furColour;
+    private String location;
 
     public Long getId() {
         return id;
@@ -38,6 +41,13 @@ public class Dog {
     public void setAge(Long age) {
         this.age = age;
     }
+    public String getPetType() {
+        return petType;
+    }
+
+    public void setPetType(String petType) {
+        this.petType = petType;
+    }
 
     public String getFurColour() {
         return furColour;
@@ -55,8 +65,6 @@ public class Dog {
         this.location = location;
     }
 
-    private String furColour;
-    private String location;
 
-    // getter, setters, contructors
+
 }
