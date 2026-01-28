@@ -43,6 +43,9 @@ jobs:
   frontend-check:
     name: Frontend Build (React 19)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/main/frontend
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node
