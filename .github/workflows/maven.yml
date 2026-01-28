@@ -46,6 +46,8 @@ jobs:
     defaults:
       run:
         working-directory: src/main/frontend
+          - name: Debug File Path
+            run: ls -R src/main/frontend
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node
@@ -58,3 +60,4 @@ jobs:
         run: |
           npm ci --legacy-peer-deps
           npm run build --if-present
+        working-directory: src/main/frontend
