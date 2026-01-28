@@ -7,50 +7,50 @@ on:
     branches: [ "master" ]
 
 jobs:
+  # Backend
   build-project:
-    name: Build project
+    name: Backend build (SpringBoot)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Quiet Build
+        run: mvn -B compile -q
 
-      - name: Compile and Package
-        run: mvn -B package -DskipTests
-
-
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: target/
-
+  #Backend Tests
   test-project:
-    name: Test project
+    name: Backend Tests(Mockito)
     needs: build-project
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Run Tests (Quiet Downloads)
+        run: >
+          mvn -B test 
+          -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.QuietMavenTransferListener=true
 
-
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
+  # Frontend
+  frontend-check:
+    name: Frontend Build (React 19)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          name: build-output
-          path: target/
-
-      - name: Run Tests
-        run: mvn -q -B test
+          node-version: '20'
+          cache: 'npm'
+      - name: Install and Build
+        run: |
+          npm ci --legacy-peer-deps
+          npm run build --if-present
