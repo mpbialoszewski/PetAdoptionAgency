@@ -1,6 +1,26 @@
 package com.mpb.petadoptionagency.dto;
 
+import jakarta.validation.constraints.*;
+
 public class PetDTO {
+
+    private Long id;
+
+    //Validation to prevent SQL injections
+    @NotBlank(message="Name is required")
+    private String name;
+    @Min(0)
+    private Long age;
+    private String petType;
+    private String furColour;
+
+    @Size(max = 150)
+// Allowed: letters, numbers, spaces, hyphens, and commas.
+// Blocks - scripts and HTMLs
+    @Pattern(regexp = "^[a-zA-Z0-9 ,-]*$", message = "Location contains invalid characters")
+    private String location;
+
+
     public Long getId() {
         return id;
     }
@@ -49,12 +69,6 @@ public class PetDTO {
         this.location = location;
     }
 
-    private Long id;
-    private String name;
-    private Long age;
-    private String petType;
-    private String furColour;
-    private String location;
 
 
 }
