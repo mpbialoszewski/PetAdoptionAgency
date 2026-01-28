@@ -46,8 +46,6 @@ jobs:
     defaults:
       run:
         working-directory: src/main/frontend
-          - name: Debug File Path
-            run: ls -R src/main/frontend
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node
