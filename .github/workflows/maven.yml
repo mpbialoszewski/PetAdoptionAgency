@@ -53,4 +53,4 @@ jobs:
           path: target/
 
       - name: Run Tests
-        run: mvn -B test
+        run: mvn -q -B test
