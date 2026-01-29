@@ -13,7 +13,9 @@ public class Pet {
     @Column(nullable = false)
     private String name;
     private Long age;
+    @Column(name="pet_type")
     private String petType;
+    @Column(name="fur_colour")
     private String furColour;
     private String location;
 

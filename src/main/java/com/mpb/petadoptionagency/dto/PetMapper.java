@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring") // This is the "flag"
+@Mapper(componentModel = "spring")
 public interface PetMapper {
 
     PetDTO toDTO(Pet pet);

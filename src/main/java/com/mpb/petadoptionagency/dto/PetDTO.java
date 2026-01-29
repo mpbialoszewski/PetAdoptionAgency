@@ -9,6 +9,7 @@ public class PetDTO {
     //Validation to prevent SQL injections
     @NotBlank(message="Name is required")
     private String name;
+
     @Min(0)
     private Long age;
     private String petType;

@@ -4,7 +4,6 @@ const Gallery = () => {
     const [pets, setPets] = useState([]);
 
     useEffect(() => {
-        // This fetches from your Spring Boot backend thanks to the proxy!
         fetch('/pets')
             .then(res => res.json())
             .then(data => setPets(data))
@@ -30,7 +29,7 @@ const Gallery = () => {
                 <p><strong>Type:</strong> {pet.petType}</p>
                 <p><strong>Color:</strong> {pet.furColour}</p>
                 <p><strong>Age:</strong> {pet.age} years</p>
-                <p style={{ fontStyle: 'italic', fontSize: '0.9em' }}>📍 {pet.location}</p>
+                <p style={{ fontStyle: 'italic', fontSize: '0.9em' }}> {pet.location}</p>
             </div>
         ))}
     </div>

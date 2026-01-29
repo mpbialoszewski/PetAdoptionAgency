@@ -31,6 +31,10 @@ code {
   font-family: "Comic Sans MS", cursive;
 }
 
+.navbar ul{
+  list-style-type: none;
+}
+
 li{
   color: white;
 }
@@ -42,9 +46,6 @@ li:hover{
   border-radius: 0.5rem;
 }
 
-li:active{
-  background-color: darkred;
-}
 
 ul li {
   float: left;
