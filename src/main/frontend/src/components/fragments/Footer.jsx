@@ -1,5 +1,3 @@
-import Home from "../home/Home";
-
 const Footer = () => {
     return(
         <>
