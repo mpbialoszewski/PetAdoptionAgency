@@ -6,20 +6,12 @@ import Footer from "../fragments/Footer";
 
 const Home = () => {
     return(
-    <div className="hero">
-        <div className="hero-body">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
+            <div className="main">
                         <Hero />
                         <Services />
                         <Stats />
                         <Testimonials />
                         <Footer />
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     )}
 
