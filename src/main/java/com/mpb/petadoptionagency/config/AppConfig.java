@@ -21,11 +21,11 @@ public class AppConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Only for H2/Testing
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").hasRole("Admin") // Looks for ROLE_Admin
+                        .requestMatchers("/admin/**").hasRole("Admin") // L
                         .requestMatchers("/user/**").hasAnyRole("User", "Admin")
-                        .requestMatchers("/h2-console/**").permitAll() // Allow DB access
+                        .requestMatchers("/h2-console/**").permitAll() //
                         .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults())
